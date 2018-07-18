@@ -1,0 +1,23 @@
+{
+  "name": "bookapp",
+  "version": "1.0.0",
+  "description": "Group project building a Book App! Alexis Bohlander",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acroak/bookapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acroak/bookapp/issues"
+  },
+  "homepage": "https://github.com/acroak/bookapp#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
