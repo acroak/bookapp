@@ -17,6 +17,7 @@ app.controller('MainController', ['$http', function($http) {
          genre:this.genre
        }
      }).then(response => {
+       this.getBooks();
        console.log(response.data);
      }, error => {
        console.log(error);
@@ -41,10 +42,7 @@ app.controller('MainController', ['$http', function($http) {
         method: 'DELETE',
         url: '/books/' + id
       }).then( response => {
-        
         this.getBooks();
-      // const removeByIndex = this.books.findIndex(book => book._id === id)
-      // this.books.splice(removeByIndex, 1)
         //console.log(response.data);
         console.log('removed book!');
       }, error =>{
