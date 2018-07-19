@@ -15,12 +15,9 @@
         <h1>Create Book</h1>
         <form ng-submit="ctrl.createBook()">
           <input type="text" placeholder="title" ng-model="ctrl.title"/>
-          {{ctrl.title}}
           <input type="text" placeholder="author" ng-model="ctrl.author"/>
           <input type="text" placeholder="genre" ng-model="ctrl.genre"/>
           <input type="submit" value="CREATE"/>
-
-
         </form>
 
           <ul ng-repeat="book in ctrl.books">
