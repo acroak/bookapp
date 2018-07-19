@@ -29,5 +29,18 @@ $http({
   console.log(error);
 })
 }
+this.updateBookTitle = book => {
+  $http({
+    method:'PUT',
+    url:'/books/' + book._id,
+    data: {
+      title: book.title
+    }
+  }).then(response => {
+    console.log(response.data.title);
+  }, error => {
+    console.log(error);
+  })
+}
 this.getBooks()
 }]); //app controller ends here.

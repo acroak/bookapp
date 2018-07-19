@@ -22,8 +22,9 @@
         </form>
          <table>
           <tr ng-repeat="book in ctrl.books">
-            <td>{{book.title}}</td>
+            <td ng-click="ctrl.updateBookTitle(book)">{{book.title}}</td>
             <td></td>
+
           </tr>
         </table>
       </div>
