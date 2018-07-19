@@ -1,23 +1,47 @@
 const express = require('express');
 const router = express.Router();
 const Book = require('../models/books.js')
-//show all books... INDEX
-router.get('/', (req, res)=> {
-  //res.send('index')
-  Book.find({}, (err, foundBook)=>{
-    console.log('found a book!');
-    res.json(foundBook)
-  })
-});
 
-//add a book!
-router.post('/',(req,res)=>{
-  Book.create(req.body,(err, createdBook)=>{
-    res.json(createdBook);
-    console.log('we created a book!');
-  })
-});
-//curl -X POST -H "Content-Type: application/json" -d '{"title":"", "author":"", "genre":""}' http://localhost:3000/books
-//curl -X POST -H "Content-Type: application/json" -d '{"title":"Harry Potter and the Sorcerers Stone", "author":"J.K.Rowling", "genre":"Young Adult"}' http://localhost:3000/books
+// INDEX
+router.get('/', async (req, res) => {
+  try {
+    const router = await Book.find()
+    res.status(200).json(router)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
+
+// CREATE
+router.post('/', async (req, res) => {
+  try {
+    const newBook = await Book.create(req.body)
+    res.status(200).json(newBook)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
+
+// DELETE
+router.delete('/:id', async (req, res) => {
+  try {
+    const deleteBook = await Book.findByIdAndRemove(req.params.id)
+    res.status(200).json(deleteBook)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
+
+// EDIT
+router.put('/:id', async (req, res) => {
+  try {
+    const updateBook = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    res.status(200).json(updateBook)
+  } catch (error) {
+    res.status(400).json({error: error.message})
+  }
+})
+
+
 
 module.exports = router;

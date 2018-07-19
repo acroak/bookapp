@@ -23,7 +23,9 @@
          <table>
           <tr ng-repeat="book in ctrl.books">
             <td>{{book.title}}</td>
-            <td></td>
+            <td ng-click="ctrl.deleteBook(book._id)">
+              X
+            </td>
           </tr>
         </table>
       </div>
