@@ -1,8 +1,7 @@
 const app = angular.module('BookApp', []);
 
 app.controller('MainController', ['$http', function($http) {
-  // this.foo = 'bar'
-  //const controller = this;
+
    this.books = [];
    this.createForm = {};
    this.book = '';
@@ -49,18 +48,21 @@ app.controller('MainController', ['$http', function($http) {
         console.log(error);
       })
     }
+
     this.updateBookTitle = book => {
       console.log('updating...');
       $http({
         method:'PUT',
         url:'/books/' + book._id,
         data: {
-          title: book.updateTitle
+          title: book.updatedTitle,
+          author: book.updatedAuthor,
+          genre: book.updatedGenre
         }
       }).then(response => {
+        this.getBooks()
         console.log(book.title);
         console.log('update success!');
-        this.getBooks()
       }, error => {
         console.log(error);
       })
