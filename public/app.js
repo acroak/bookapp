@@ -50,13 +50,16 @@ app.controller('MainController', ['$http', function($http) {
       })
     }
     this.updateBookTitle = book => {
+      console.log('updating...');
       $http({
         method:'PUT',
         url:'/books/' + book._id,
         data: {
-          title: book.title
+          title: book.updateTitle
         }
       }).then(response => {
+        console.log(book.title);
+        console.log('update success!');
         this.getBooks()
       }, error => {
         console.log(error);

@@ -22,21 +22,28 @@
 
 
         </form>
-         <table>
-          <tr ng-repeat="book in ctrl.books">
-            <td>{{book.title}}</td>
-            <td><a href="#" ng-click="ctrl.updateBookTitle(book._id)">Update</a>
-            </td>  
+
+          <ul>
+            <li ng-repeat="book in ctrl.books">
+              {{book.title}}
+              <!-- <a href="#" ng-click="ctrl.updateBookTitle(book._id)">Update</a>
+
             <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.updateBookTitle(book)">
-              <input type="text" ng-model="ctrl.title" placeholder="edit title">
-            </form>
+              <input type="text" ng-model="ctrl.title" placeholder="edit title"/>
+              <input type="submit" value="Update Description">
+            </form> -->
+            <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Edit Book</a>
+                  <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.updateBookTitle(book);">
 
-            <td ng-click="ctrl.deleteBook(book._id)">
-              X
-            </td>
+                    <input type="text" ng-model="ctrl.updateTitle" placeholder="Title" />
+                    <input type="submit" value="Update Title">
+                    {{ctrl.updateTitle}}
+                  </form>
 
-          </tr>
-        </table>
+            <button type="button" ng-click="ctrl.deleteBook(book._id)">DELETE</button>
+            </li>
+          </ul>
+
       </div>
     </div>
   </body>
