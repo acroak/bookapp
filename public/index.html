@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="BookApp">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script src="/app.js" charset="utf-8"></script>
+    <title>Book App</title>
+  </head>
+  <body ng-controller="MainController as ctrl">
+    {{ctrl.foo}}
+    {{ctrl.title}}
+    <div class="container">
+      <div class="">
+        <h1>Create Book</h1>
+        <form ng-submit="ctrl.createBook()">
+          <input type="text" placeholder="title" ng-model="ctrl.title"/>
+          <input type="text" placeholder="author" ng-model="ctrl.author"/>
+          <input type="text" placeholder="genre" ng-model="ctrl.genre"/>
+          <input type="submit" value="CREATE"/>
+        </form>
+
+          <ul ng-repeat="book in ctrl.books">
+            <li>
+              {{book.title}}, {{book.author}}, {{book.genre}}
+            <a href="#" ng-click="ctrl.indexOfEditFormToShow = $index">Edit Book</a>
+                  <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.updateBookTitle(book);">
+
+                    <input type="text" ng-model="book.updatedTitle" placeholder="{{book.title}}" />
+                    <input type="text" ng-model="book.updatedAuthor" placeholder="{{book.author}}" />
+                    <input type="text" ng-model="book.updatedGenre" placeholder="{{book.genre}}" />
+                    <input type="submit" value="Update Title">
+
+                  </form>
+
+            <button type="button" ng-click="ctrl.deleteBook(book._id)">DELETE</button>
+            </li>
+          </ul>
+
+      </div>
+    </div>
+  </body>
+</html>
