@@ -22,9 +22,16 @@
         </form>
          <table>
           <tr ng-repeat="book in ctrl.books">
+<<<<<<< HEAD
             <td ng-click="ctrl.updateBookTitle(book)">{{book.title}}</td>
             <td></td>
 
+=======
+            <td>{{book.title}}</td>
+            <td ng-click="ctrl.deleteBook(book._id)">
+              X
+            </td>
+>>>>>>> bc749909fd52e9ed5e8dbe02c0cf1331e35fe434
           </tr>
         </table>
       </div>
