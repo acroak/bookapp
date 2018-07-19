@@ -24,9 +24,10 @@ $http({
   method:'GET',
   url:'/books',
 }).then(response => {
-  console.log(response.data);
+  this.books = response.data;
 }, error => {
   console.log(error);
 })
 }
+this.getBooks()
 }]); //app controller ends here.
