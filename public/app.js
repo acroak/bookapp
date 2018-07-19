@@ -25,30 +25,6 @@ app.controller('MainController', ['$http', function($http) {
    }//end createBook function
 
    this.getBooks = () => {
-<<<<<<< HEAD
-$http({
-  method:'GET',
-  url:'/books',
-}).then(response => {
-  this.books = response.data;
-}, error => {
-  console.log(error);
-})
-}
-this.updateBookTitle = book => {
-  $http({
-    method:'PUT',
-    url:'/books/' + book._id,
-    data: {
-      title: book.title
-    }
-  }).then(response => {
-    console.log(response.data.title);
-  }, error => {
-    console.log(error);
-  })
-}
-=======
     $http({
       method:'GET',
       url:'/books',
@@ -73,6 +49,18 @@ this.updateBookTitle = book => {
         console.log(error);
       })
     }
->>>>>>> bc749909fd52e9ed5e8dbe02c0cf1331e35fe434
+    this.updateBookTitle = book => {
+      $http({
+        method:'PUT',
+        url:'/books/' + book._id,
+        data: {
+          title: book.title
+        }
+      }).then(response => {
+        this.getBooks()
+      }, error => {
+        console.log(error);
+      })
+    }
 this.getBooks()
 }]); //app controller ends here.
