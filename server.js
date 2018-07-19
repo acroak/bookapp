@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+app.use(express.json());
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }))
 
 const booksController = require('./controllers/books.js');
 app.use('/books', booksController)
@@ -12,8 +15,7 @@ mongoose.connection.once('open', ()=>{
   console.log('mongoose connected');
 });
 
-app.use(express.json());
-app.use(express.static('public'));
+
 
 
 
